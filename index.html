@@ -10,6 +10,12 @@
             --dark: #000;
             --light: #fff;
             --accent: #00f2fe;
+            --gray-800: #1a1a1a;
+            --gray-900: #111111;
+            --card-bg: rgba(26, 26, 26, 0.95);
+            --card-border: rgba(255, 255, 255, 0.1);
+            --nav-bg: rgba(0, 0, 0, 0.8);
+            --button-hover: rgba(255, 255, 255, 0.1);
         }
 
         * {
@@ -22,33 +28,11 @@
         body {
             background: var(--dark);
             color: var(--light);
-            line-height: 1.5;
+            line-height: 1.6;
             overflow-x: hidden;
+            min-height: 100vh;
         }
-        .store-button-link {
-    display: block;
-    text-align: center;
-    margin-top: 1rem;
-}
 
-.store-button {
-    height: 48px;
-    transition: transform 0.3s;
-    display: inline-block;
-}
-
-.store-button:hover {
-    transform: scale(1.05);
-}
-
-.install-steps {
-    margin-bottom: 1rem;
-    padding-left: 1.5rem;
-}
-
-.install-steps li {
-    margin-bottom: 0.5rem;
-}
         .mesh-bg {
             position: fixed;
             inset: 0;
@@ -62,182 +46,95 @@
             z-index: -1;
         }
 
-        @keyframes meshMove {
-            to { background-position: 50px 50px; }
+        .nav {
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+            background: var(--nav-bg);
+            padding: 1rem 0;
+            border-bottom: 1px solid var(--card-border);
         }
 
-      /* Replace the existing nav styles with these */
-.nav {
-    padding: 1rem 2rem;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    position: fixed;
-    width: 100%;
-    z-index: 100;
-    background: transparent;
-}
-/* Updated dropdown styles */
-.nav-group {
-    position: relative;
-}
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
 
-.download-links {
-    background: #1a1a1a;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(10px);
-}
-.info-cards {
-    display: flex;
-    gap: 2rem;
-    justify-content: center;
-    margin: 3rem auto;
-    max-width: 1200px;
-    padding: 0 2rem;
-    flex-wrap: wrap;
-}
-.info-card {
-    background: rgba(26, 26, 26, 0.95);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 12px;
-    padding: 1.5rem;
-    min-width: 300px;
-    backdrop-filter: blur(10px);
-    transition: transform 0.3s ease;
-}
+        .logo-image {
+            height: 40px;
+        }
 
-.info-card:hover {
-    transform: translateY(-5px);
-    border-color: var(--accent);
-}
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
 
-.card-header {
-    margin-bottom: 1rem;
-    padding-bottom: 0.5rem;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-}
+        .nav-group {
+            position: relative;
+        }
 
-.card-header h3 {
-    color: var(--accent);
-    font-size: 1.2rem;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-}
+        .download-btn {
+            background: var(--primary);
+            color: var(--light);
+            padding: 0.5rem 1.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
 
-.card-content {
-    color: rgba(255, 255, 255, 0.9);
-}
+        .download-btn:hover {
+            background: #2563eb;
+            transform: translateY(-2px);
+        }
 
-.card-content p {
-    margin-bottom: 0.5rem;
-}
-.download-links::before {
-    content: '';
-    position: absolute;
-    top: -20px;
-    left: 0;
-    right: 0;
-    height: 20px;
-    background: transparent;
-}
+        .download-links {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--card-bg);
+            min-width: 200px;
+            margin-top: 1rem;
+            border-radius: 12px;
+            border: 1px solid var(--card-border);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            backdrop-filter: blur(10px);
+        }
 
-.nav-group:hover .download-links,
-.download-links:hover {
-    display: block;
-}
-
-.download-links a {
-    display: block;
-    padding: 0.75rem 1rem;
-    color: white;
-    text-decoration: none;
-    transition: background-color 0.3s;
-    border-radius: 4px;
-}
-
-.download-links a:hover {
-    background: rgba(255, 255, 255, 0.1);
-}
-
-/* Store buttons styles */
-.store-buttons {
-    display: flex;
-    gap: 2rem;
-    justify-content: center;
-    margin-top: 2rem;
-}
-
-.store-button {
-    cursor: pointer;
-    height: 48px;
-    transition: transform 0.3s;
-}
-
-.store-button:hover {
-    transform: scale(1.05);
-}
-.logo-image {
-    height: 40px;
-}
-
-.nav-container {
-    display: flex;
-    align-items: center;
-}
-
-.nav-links {
-    display: flex;
-    gap: 3rem;
-    align-items: center;
-}
-
-.nav-links a {
-    color: var(--light);
-    text-decoration: none;
-    padding: 0.5rem 1rem;
-    transition: 0.3s;
-}
-
-.nav-group {
-    position: relative;
-}
-
-.download-btn {
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 8px;
-    padding: 0.5rem 1.5rem !important;
-}
-
-.download-links {
-    display: none;
-    position: absolute;
-    top: 100%;
-    left: 50%;
-    transform: translateX(-50%);
-    background: transparent;
-    min-width: 150px;
-    margin-top: 1rem;
-    text-align: center;
-}
-
-.download-links a {
-    display: block;
-    padding: 0.5rem 1rem;
-    color: white;
-    text-decoration: none;
-    margin: 0.5rem 0;
-}
-
-.nav-group:hover .download-links {
-    display: block;
-}
-/* Update HTML structure */
-html
-
-        .dropdown:hover .dropdown-content {
+        .nav-group:hover .download-links {
             display: block;
+        }
+
+        .download-links a {
+            display: block;
+            padding: 0.75rem 1rem;
+            color: var(--light);
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+
+        .download-links a:hover {
+            background: var(--button-hover);
+        }
+
+        .nav-links a {
+            color: var(--light);
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            background: var(--button-hover);
         }
 
         .hero {
@@ -246,9 +143,8 @@ html
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            padding: 4rem 2rem;
+            padding: 8rem 2rem 4rem;
             text-align: center;
-            padding-top: 80px;
         }
 
         .hero h1 {
@@ -258,88 +154,173 @@ html
             animation: glow 2s ease-in-out infinite alternate;
         }
 
-        @keyframes glow {
-            to { text-shadow: 0 0 30px rgba(0,242,254,0.8); }
+        .hero p {
+            font-size: clamp(1rem, 2vw, 1.25rem);
+            max-width: 600px;
+            margin: 0 auto 3rem;
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.8;
         }
 
         .app-showcase {
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-            margin: 2rem 0;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
             max-width: 1200px;
-            padding: 0 1rem;
+            margin: 4rem auto;
+            padding: 0 1.5rem;
         }
 
         .app-screen {
-            width: 280px;
-            border-radius: 30px;
-            transform: scale(0.95);
-            transition: 0.3s;
-            position: relative;
+            width: 100%;
+            max-width: 350px;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+            margin: 0 auto;
         }
 
         .app-screen:hover {
-            transform: translateY(-10px) scale(1);
-            box-shadow: 0 0 30px rgba(0,242,254,0.3);
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 30px 60px rgba(0, 242, 254, 0.2);
         }
 
         .download-buttons {
             display: flex;
             justify-content: center;
             gap: 2rem;
-            margin-top: 2rem;
+            margin-top: 3rem;
         }
 
         .store-button {
             height: 48px;
-            transition: transform 0.3s;
+            transition: all 0.3s ease;
+            filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.1));
         }
 
         .store-button:hover {
-            transform: scale(1.05);
+            transform: translateY(-5px) scale(1.05);
+            filter: drop-shadow(0 8px 16px rgba(0, 242, 254, 0.2));
+        }
+
+        .info-cards {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 1.5rem;
+            display: grid;
+            gap: 2rem;
+        }
+
+        .demo-card {
+            grid-column: 1 / -1;
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 16px;
+            padding: 2rem;
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .demo-credentials {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 1.5rem;
+            border-radius: 12px;
+            margin: 1.5rem 0;
+            text-align: left;
+        }
+
+        .install-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .info-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 16px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .info-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent);
+            box-shadow: 0 10px 30px rgba(0, 242, 254, 0.1);
+        }
+
+        .card-header {
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--card-border);
+        }
+
+        .card-header h3 {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--accent);
+            font-size: 1.25rem;
+        }
+
+        .install-steps {
+            list-style-position: inside;
+            margin: 1rem 0;
+        }
+
+        .install-steps li {
+            margin-bottom: 0.75rem;
+            color: rgba(255, 255, 255, 0.8);
         }
 
         .features {
-            padding: 4rem 2rem;
-            background: rgba(0,0,0,0.9);
-            backdrop-filter: blur(10px);
+            background: var(--gray-900);
+            padding: 6rem 0;
         }
 
         .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
             max-width: 1200px;
             margin: 0 auto;
+            padding: 0 1.5rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
         }
 
         .feature-card {
-            background: rgba(255,255,255,0.05);
-            padding: 1.5rem;
-            border-radius: 15px;
-            border: 1px solid rgba(255,255,255,0.1);
-            transition: 0.3s;
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 16px;
+            border: 1px solid var(--card-border);
+            transition: all 0.3s ease;
         }
 
         .feature-card:hover {
             transform: translateY(-5px);
             border-color: var(--primary);
+            box-shadow: 0 10px 30px rgba(59, 130, 246, 0.1);
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
         }
 
         .devices-showcase {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1rem;
             max-width: 1200px;
-            margin: 2rem auto;
-            padding: 0 1rem;
+            margin: 4rem auto;
+            padding: 0 1.5rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
         }
 
         .device img {
             width: 100%;
             border-radius: 12px;
-            transition: transform 0.3s;
+            transition: transform 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
         }
 
         .device:hover img {
@@ -347,43 +328,98 @@ html
         }
 
         .footer {
-            background: rgba(0,0,0,0.95);
+            background: var(--gray-900);
             padding: 2rem;
             text-align: center;
+            border-top: 1px solid var(--card-border);
         }
 
         @media (max-width: 768px) {
-            .nav-links { display: none; }
-            .app-showcase { flex-direction: column; align-items: center; }
-            .devices-showcase { grid-template-columns: 1fr; }
-            .hero { padding-top: 100px; }
+            .nav-links {
+                display: none;
+            }
+
+            .nav-container {
+                justify-content: center;
+            }
+
+            .hero {
+                padding-top: 6rem;
+            }
+
+            .download-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .app-showcase {
+                grid-template-columns: 1fr;
+            }
+
+            .info-cards {
+                grid-template-columns: 1fr;
+            }
+
+            .devices-showcase {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @keyframes glow {
+            from {
+                text-shadow: 0 0 20px rgba(0, 242, 254, 0.5);
+            }
+            to {
+                text-shadow: 0 0 30px rgba(0, 242, 254, 0.8);
+            }
+        }
+
+        @keyframes meshMove {
+            to {
+                background-position: 50px 50px;
+            }
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        code {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 0.2rem 0.4rem;
+            border-radius: 4px;
+            font-family: monospace;
         }
     </style>
 </head>
 <body>
     <div class="mesh-bg"></div>
-<!-- Replace the existing nav section with this -->
-<nav class="nav">
-    <img src="images/logo.png" alt="Mesh Rider Logo" class="logo-image">
-    <div class="nav-container">
-        <div class="nav-links">
-            <div class="nav-group">
-                <a href="#" class="download-btn" onclick="return false;">Download</a>
-                <div class="download-links">
+    
+    <nav class="nav">
+        <div class="nav-container">
+            <img src="images/logo.png" alt="Mesh Rider Logo" class="logo-image">
+            <div class="nav-links">
+                <div class="nav-group">
+                    <a href="#" class="download-btn">Download</a>
                     <div class="download-links">
-                        <a href="https://doodlelabs.sharepoint.com/:w:/s/TechnicalSupport/EW4MwXjCCv1Mg7FprvddbWkB8JuYaK_8cEUaKnBf9Kh7jw?e=0GFfZo" target="_blank" rel="noopener">User Guide</a>
-                        <a href="https://doodlelabs.sharepoint.com/:u:/s/TechnicalSupport/ESVwVY4yHE9Jve0bJn7pmW0BQIfE7lcowMFMvUkvri98hw?e=nEtWlc" target="_blank" rel="noopener">Android</a>
-                        <a href="https://apps.microsoft.com/detail/9PJBJM5DX77T?hl=en&gl=SG&ocid=pdpshare" target="_blank" rel="noopener">Windows</a>
-                        <a href="https://doodlelabs.sharepoint.com/:u:/s/TechnicalSupport/EXpoxn71OjRNu2oVGMrJsooBCXNTaUS1Fr-c-geZI-HD0w?e=OfHeVc" target="_blank" rel="noopener">Linux</a>
+                        <a href="https://doodlelabs.sharepoint.com/:w:/s/TechnicalSupport/EW4MwXjCCv1Mg7FprvddbWkB8JuYaK_8cEUaKnBf9Kh7jw?e=0GFfZo">User Guide</a>
+                        <a href="https://doodlelabs.sharepoint.com/:u:/s/TechnicalSupport/ESVwVY4yHE9Jve0bJn7pmW0BQIfE7lcowMFMvUkvri98hw?e=nEtWlc">Android</a>
+                        <a href="https://apps.microsoft.com/detail/9PJBJM5DX77T?hl=en&gl=SG&ocid=pdpshare">Windows</a>
+                        <a href="https://doodlelabs.sharepoint.com/:u:/s/TechnicalSupport/EXpoxn71OjRNu2oVGMrJsooBCXNTaUS1Fr-c-geZI-HD0w?e=OfHeVc">Linux</a>
                     </div>
                 </div>
+                <a href="https://doodlelabs.com/technical-support/">FAQ</a>
+                <a href="https://contact.doodlelabs.com/">Contact</a>
             </div>
-            <a href="#faq">FAQ</a>
-            <a href="#contact">Contact</a>
         </div>
-    </div>
-</nav>
-<!-- Add after download-links div -->
+    </nav>
 
     <section class="hero">
         <h1>Mesh Rider Application</h1>
@@ -391,134 +427,103 @@ html
         Perfect for UAVs, Robots, and Industrial IoT applications.</p>
         
         <div class="app-showcase">
-            <img src="images/png1.png" alt="Dashboard View" class="app-screen">
-            <img src="images/pn2.png" alt="Control Panel" class="app-screen">
-            <img src="images/png1.png" alt="Settings View" class="app-screen">
+            <img src="images/png1.png" alt="Dashboard View" class="app-screen fade-in">
+            <img src="images/pn2.png" alt="Control Panel" class="app-screen fade-in">
+            <img src="images/png1.png" alt="Settings View" class="app-screen fade-in">
         </div>
-
-<!-- Update the store buttons section -->
 <div class="download-buttons">
-    <a href="https://doodlelabs.sharepoint.com/:u:/s/TechnicalSupport/EXpoxn71OjRNu2oVGMrJsooBCXNTaUS1Fr-c-geZI-HD0w?e=D7mZmQ" target="_blank" rel="noopener">
-        <img src="images/icon_linux.png"  alt="Download for Linux/Ubuntu" class="store-button" title="Download Mesh Rider for Linux/Ubuntu">
-    </a>
-    <a href="https://apps.microsoft.com/detail/9PJBJM5DX77T?hl=en&gl=SG&ocid=pdpshare" target="_blank" rel="noopener">
-        <img src="images/app-store.png" alt="Download for Windows" class="store-button">
-    </a>
-    <a href="https://doodlelabs.sharepoint.com/:u:/s/TechnicalSupport/ESVwVY4yHE9Jve0bJn7pmW0BQIfE7lcowMFMvUkvri98hw?e=nEtWlc" target="_blank" rel="noopener">
-        <img src="images/play-store.png" alt="Download for Android" class="store-button">
-    </a>
-</div>
+            <a href="https://doodlelabs.sharepoint.com/:u:/s/TechnicalSupport/EXpoxn71OjRNu2oVGMrJsooBCXNTaUS1Fr-c-geZI-HD0w?e=D7mZmQ" target="_blank" rel="noopener">
+                <img src="images/icon_linux.png" alt="Download for Linux/Ubuntu" class="store-button">
+            </a>
+            <a href="https://apps.microsoft.com/detail/9PJBJM5DX77T?hl=en&gl=SG&ocid=pdpshare" target="_blank" rel="noopener">
+                <img src="images/app-store.png" alt="Download for Windows" class="store-button">
+            </a>
+            <a href="https://doodlelabs.sharepoint.com/:u:/s/TechnicalSupport/ESVwVY4yHE9Jve0bJn7pmW0BQIfE7lcowMFMvUkvri98hw?e=nEtWlc" target="_blank" rel="noopener">
+                <img src="images/play-store.png" alt="Download for Android" class="store-button">
+            </a>
+        </div>
     </section>
+
     <div class="info-cards">
-        <!-- Demo Account Card on top -->
-        <div class="info-card" style="width: 100%; max-width: 600px; margin: 0 auto 2rem auto;">
+        <div class="demo-card fade-in">
             <div class="card-header">
                 <h3>🎮 Try Demo Version</h3>
             </div>
-            <div class="card-content">
-                <p style="margin-bottom: 1rem; color: #666;">
-                    Want to explore Mesh Rider App without physical hardware? Use these demo credentials to experience the app's features in simulation mode:
-                </p>
-                <div style="background: #000000; padding: 1.5rem; border-radius: 8px; border: 1px solid #e9ecef;">
-                    <p><strong> IP:</strong> 192.168.153.1</p>
-                    <p><strong>Username:</strong> demo</p>
-                    <p><strong>Password:</strong> demo123</p>
-                </div>
-                <p style="margin-top: 1rem; font-size: 0.9rem; color: #666; text-align: center;">
-                    ℹ️ This demo account provides access to simulated device features for testing purposes.
-                </p>
+            <p>Want to explore Mesh Rider App without physical hardware? Use these demo credentials:</p>
+            <div class="demo-credentials">
+                <p><strong>IP:</strong> 192.168.153.1</p>
+                <p><strong>Username:</strong> demo</p>
+                <p><strong>Password:</strong> demo123</p>
             </div>
+            <p class="info-note">This demo account provides access to simulated device features for testing purposes.</p>
         </div>
-        
-        <!-- Installation Guide Cards in one row -->
-        <div style="display: flex; gap: 2rem; flex-wrap: wrap; justify-content: center;">
-            <!-- Windows Installation Guide Card -->
-            <div class="info-card" style="flex: 1; min-width: 350px;">
+
+        <div class="install-cards">
+            <div class="info-card fade-in">
                 <div class="card-header">
                     <h3>⊞ Windows Installation</h3>
                 </div>
-                <div class="card-content">
-                    <ol class="install-steps">
-                        <li>Open Microsoft Store on Windows PC</li>
-                        <li>Search for "Mesh Rider" or use our link</li>
-                        <li>Click "Get" or "Install" button</li>
-                        <li>Launch and enter demo credentials</li>
-                    </ol>
-                    <a href="https://apps.microsoft.com/detail/9PJBJM5DX77T?hl=en&gl=SG&ocid=pdpshare" 
-                       target="_blank" 
-                       rel="noopener" 
-                       class="store-button-link">
-                       <img src="images/app-store.png"  alt="Download for Windows" class="store-button" title="Get Mesh Rider from Microsoft Store">
-                    </a>
-                </div>
+                <ol class="install-steps">
+                    <li>Open Microsoft Store on Windows PC</li>
+                    <li>Search for "Mesh Rider" or use our link</li>
+                    <li>Click "Get" or "Install" button</li>
+                    <li>Launch and enter demo credentials</li>
+                </ol>
+                <a href="https://apps.microsoft.com/detail/9PJBJM5DX77T?hl=en&gl=SG&ocid=pdpshare" target="_blank" rel="noopener" class="store-button-link">
+                    <img src="images/app-store.png" alt="Download for Windows" class="store-button">
+                </a>
             </div>
-    
-            <!-- Android Installation Guide Card -->
-            <div class="info-card" style="flex: 1; min-width: 300px;">
+
+            <div class="info-card fade-in">
                 <div class="card-header">
                     <h3>🤖 Android Installation</h3>
                 </div>
-                <div class="card-content">
-                    <ol class="install-steps">
-                        <li>Download the Android APK file</li>
-                        <li>Open the downloaded APK</li>
-                        <li>Follow installation prompts</li>
-                        <li>Launch and enter demo credentials</li>
-                    </ol>
-                    <a href="https://doodlelabs.sharepoint.com/:u:/s/TechnicalSupport/ESVwVY4yHE9Jve0bJn7pmW0BQIfE7lcowMFMvUkvri98hw?e=nEtWlc" 
-                       target="_blank" 
-                       rel="noopener" 
-                       class="store-button-link">
-                        <img src="images/play-store.png" alt="Download for Android" class="store-button" title="Download Mesh Rider for Android">
-                    </a>
-                </div>
+                <ol class="install-steps">
+                    <li>Download the Android APK file</li>
+                    <li>Open the downloaded APK</li>
+                    <li>Follow installation prompts</li>
+                    <li>Launch and enter demo credentials</li>
+                </ol>
+                <a href="https://doodlelabs.sharepoint.com/:u:/s/TechnicalSupport/ESVwVY4yHE9Jve0bJn7pmW0BQIfE7lcowMFMvUkvri98hw?e=nEtWlc" target="_blank" rel="noopener" class="store-button-link">
+                    <img src="images/play-store.png" alt="Download for Android" class="store-button">
+                </a>
             </div>
-    
-            <!-- Linux Installation Guide Card -->
-            <div class="info-card" style="flex: 1; min-width: 300px;">
+
+            <div class="info-card fade-in">
                 <div class="card-header">
                     <h3>🐧 Linux Installation</h3>
                 </div>
-                <div class="card-content">
-                    <ol class="install-steps">
-                        <li>Download the Linux package</li>
-                        <li>Extract the downloaded file</li>
-                        <li>Run: <code>sudo ./install.sh</code></li>
-                        <li>Launch from Applications Menu</li>
-                    </ol>
-                    <a href="https://doodlelabs.sharepoint.com/:u:/s/TechnicalSupport/EXpoxn71OjRNu2oVGMrJsooBCXNTaUS1Fr-c-geZI-HD0w?e=D7mZmQ" 
-                       target="_blank" 
-                       rel="noopener" 
-                       class="store-button-link">
-                        <img src="images/icon_linux.png" alt="Download for Linux/Ubuntu" class="store-button" title="Download Mesh Rider for Linux">
-                    </a>
-                    <p style="margin-top: 0.5rem; text-align: center;">
-                        <a href="https://doodlelabs.sharepoint.com/:u:/s/TechnicalSupport/EQPJXx3UawxKrv0uXYcUb_oBUsOO_HBF2DP0zbHQcIEeLQ?e=JVLAys" target="_blank">Detailed Installation Guide →</a>
-                    </p>
-                </div>
+                <ol class="install-steps">
+                    <li>Download the Linux package</li>
+                    <li>Extract the downloaded file</li>
+                    <li>Run: <code>sudo ./install.sh</code></li>
+                    <li>Launch from Applications Menu</li>
+                </ol>
+                <a href="https://doodlelabs.sharepoint.com/:u:/s/TechnicalSupport/EXpoxn71OjRNu2oVGMrJsooBCXNTaUS1Fr-c-geZI-HD0w?e=D7mZmQ" target="_blank" rel="noopener" class="store-button-link">
+                    <img src="images/icon_linux.png" alt="Download for Linux/Ubuntu" class="store-button">
+                </a>
             </div>
         </div>
     </div>
-    
 
     <section class="features">
         <div class="features-grid">
-            <div class="feature-card">
+            <div class="feature-card fade-in">
                 <div class="feature-icon">📱</div>
                 <h3>Cross-Platform Support</h3>
                 <p>Seamless management across Android, Windows, and Linux operating systems.</p>
             </div>
-            <div class="feature-card">
+            <div class="feature-card fade-in">
                 <div class="feature-icon">⚡</div>
                 <h3>Link Optimization</h3>
                 <p>Advanced wireless settings with TPC and distance optimization.</p>
             </div>
-            <div class="feature-card">
+            <div class="feature-card fade-in">
                 <div class="feature-icon">📊</div>
                 <h3>Real-Time Monitoring</h3>
                 <p>Live dashboard showing SSID, mode, and signal quality.</p>
             </div>
-            <div class="feature-card">
+            <div class="feature-card fade-in">
                 <div class="feature-icon">📍</div>
                 <h3>GPS Integration</h3>
                 <p>Built-in GPS support with uBlox Neo-M9N technology.</p>
@@ -527,32 +532,38 @@ html
     </section>
 
     <div class="devices-showcase">
-        <div class="device">
+        <div class="device fade-in">
             <img src="images/desktop.png" alt="Desktop View">
         </div>
-        <div class="device">
+        <div class="device fade-in">
             <img src="images/desktop2.png" alt="Mobile View">
         </div>
-        <div class="device">
+        <div class="device fade-in">
             <img src="images/desktop3.png" alt="Tablet View">
         </div>
     </div>
 
     <footer class="footer">
-        <h4>Copyright © 2024 Doodle Labs LLC</h4>
+        <p>Copyright © 2024 Doodle Labs LLC</p>
     </footer>
 
     <script>
         const observer = new IntersectionObserver(
-            entries => entries.forEach(entry => {
-                if (entry.isIntersecting) entry.target.classList.add('visible');
-            }),
-            { threshold: 0.1 }
+            entries => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            },
+            {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            }
         );
 
-        document.querySelectorAll('.feature-card, .device, .app-screen').forEach(el => {
-            el.classList.add('fade-in');
-            observer.observe(el);
+        document.querySelectorAll('.fade-in').forEach(element => {
+            observer.observe(element);
         });
     </script>
 </body>
